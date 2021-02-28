@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clock</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <section>
+            <div class="clock">
+                <div class="container">
+                    <h2 class="hour">00</h2>
+                    <h2 class="dot">:</h2>
+                    <h2 class="minute">00</h2>
+                    <h2 class="dot">:</h2>
+                    <h2 class="seconds">00</h2>
+                    <span class="ampm">AM</span>
+                </div>
+            </div>
+        </section>
+        <script>
+            const $ = document.querySelector.bind(document)
+            const hour = $('.hour')
+            const minute = $('.minute')
+            const seconds = $('.seconds')
+            const ampm = $('.ampm')
+            
+            function clock() {
+                let h = new Date().getHours()
+                let m = new Date().getMinutes()
+                let s = new Date().getSeconds()
+                if (h > 12) {
+                    h = h - 12
+                    ampm.innerHTML = 'PM'
+                }
+                h = h < 10 ? '0' + h : h
+                m = m < 10 ? '0' + m : m
+                s = s < 10 ? '0' + s : s
+                
+                hour.innerHTML = `${h}`
+                minute.innerHTML =`${m}`
+                seconds.innerHTML = `${s}`
+            }
+            let interval = setInterval(clock, 1000)
+        </script>
+    </body>
+</html>
